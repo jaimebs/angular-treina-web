@@ -1,6 +1,6 @@
 # Angular - TreinaWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+Este projeto é gerado pelo [Angular CLI](https://github.com/angular/angular-cli) versão 6.0.8.
 
 ## Development server
 
