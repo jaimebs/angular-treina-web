@@ -1,7 +1,7 @@
-<a class="back-button" > < </a>
+<a class="back-button" routerLink="/pokemon/lista"> < </a>
 
 <div class="poke-profile" >
-  <div>025 - {{ aluno?.dados?.nome.toUpperCase() }}</div>
+  <div>{{ pokemon.id }} - {{ pokemon.nome | uppercase}}</div>
   <img class="poke-sprite" src="//serebii.net/sunmoon/pokemon/025.png" />
 </div>
 

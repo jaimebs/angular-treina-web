@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalhe',
@@ -7,15 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalheComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute : ActivatedRoute) { }
 
-  aluno = {
-    dados: {
-      nome: 'Pikachu'
-    }
-  }
+  pokemon = {}
 
   ngOnInit() {
+    // this.pokemon = {
+    //   id: this.activatedRoute.snapshot.params['id'],
+    //   nome: this.activatedRoute.snapshot.params['nome']
+    // }
+
+    this.activatedRoute.params.subscribe(params => {
+      this.pokemon = {
+        id: params['id'],
+        nome: params['nome']
+      }
+    })
   }
 
 }
