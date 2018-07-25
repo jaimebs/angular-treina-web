@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from '../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-detalhe',
   templateUrl: './detalhe.component.html',
   styleUrls: ['./detalhe.component.css']
 })
-export class DetalheComponent implements OnInit {
+export class DetalheComponent implements OnInit, OnDestroy {
 
-  constructor(private activatedRoute : ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
-  pokemon = {}
+  pokemon = {}; // Objeto criado.
+  urlSubscribe: Subscription // Variável criada para escutar mudanças na url.
 
   ngOnInit() {
     // this.pokemon = {
@@ -18,12 +20,18 @@ export class DetalheComponent implements OnInit {
     //   nome: this.activatedRoute.snapshot.params['nome']
     // }
 
-    this.activatedRoute.params.subscribe(params => {
+    // Fica escutando as alterações da url.
+    this.urlSubscribe = this.activatedRoute.params.subscribe(params => {
       this.pokemon = {
         id: params['id'],
         nome: params['nome']
-      }
-    })
+      };
+    });
+  }
+
+  ngOnDestroy() {
+      // Destroi a escuta da url.
+      this.urlSubscribe.unsubscribe()
   }
 
 }

@@ -8,9 +8,9 @@ import { Observable } from '../../../node_modules/rxjs';
 })
 export class PokemonService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAll() : Observable<any>{
-    return this.http.get(`${ENDPOINT}pokedex/1/`)
+  getAll(): Observable<any> {
+    return this.http.get(`${ENDPOINT}pokedex/1/`);
   }
 }
